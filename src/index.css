@@ -1,0 +1,181 @@
+/* ============================================================
+   CraveCart - index.css
+   Small bridge for the React port. The legacy stylesheets are
+   imported verbatim; this file only covers things the original
+   did with per-page <body> classes or inline scripts.
+   ============================================================ */
+
+/* The legacy auth pages used body.auth-body (cream card on tinted bg).
+   React keeps one shared <body>, so the auth pages get the tint from
+   their own wrapper instead. */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+}
+
+/* Modal overlay: React renders it inline, so keep the legacy behaviour
+   of a fixed, centred, scrollable layer. */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  overflow-y: auto;
+  background: rgba(28, 17, 8, 0.55);
+}
+
+/* Tables used by the admin module */
+.table-wrap { overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; }
+.admin-table th,
+.admin-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  font-size: 0.92rem;
+}
+.admin-table th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+.recipe-thumb {
+  width: 54px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+.row-actions-cell { display: flex; gap: 6px; flex-wrap: wrap; }
+.icon-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.icon-btn:hover { border-color: var(--primary); color: var(--primary); }
+.icon-btn.danger:hover { border-color: #dc3545; color: #dc3545; }
+
+/* Admin dashboard cards */
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.dash-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.dash-icon { font-size: 1.6rem; }
+.dash-num { font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+.dash-lbl { font-size: 0.78rem; color: var(--text-light); }
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.panel-head h3 { font-size: 1rem; }
+
+/* Categories admin grid */
+.cats-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Star rating input (details page) */
+.star-input button {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #d8cec2;
+  padding: 0 2px;
+  transition: color 0.15s ease;
+}
+.star-input button.active { color: #f59f00; }
+
+/* Admin body tint (AdminLayout sets body.admin-body) */
+body.admin-body { background: #f7f4ef; }
+
+/* ---------- Form validation banner (used by RecipeForm) ---------- */
+.form-error-banner {
+  background: #fff5f5;
+  border: 1px solid #ffc9c9;
+  color: #c92a2a;
+  border-radius: var(--radius-sm, 10px);
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* ---------- Signup: account-type selector ---------- */
+.acct-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.acct-tabs > button {
+  flex: 1;
+  padding: 12px 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.acct-tabs > button:hover { border-color: var(--primary); color: var(--primary); }
+.acct-tabs > button.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+/* ---------- Password show/hide toggle ---------- */
+.input-wrap { position: relative; display: flex; align-items: center; }
+.pw-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 4px;
+}
+.input-wrap .form-control { padding-right: 38px; width: 100%; }
