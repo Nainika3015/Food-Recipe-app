@@ -164,3 +164,5 @@ Or import the GitHub repo `Food-Recipe-app` in the Vercel dashboard — the Vite
 ---
 
 © 2026 CraveCart – built with React + Vite.
+#   c r a v e c a r t  
+ 
